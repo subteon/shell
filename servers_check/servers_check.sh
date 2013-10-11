@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #--------------------#
 
@@ -6,19 +6,20 @@
 # auther : teon
 
 # with files
-# -- servers_list.txt
+# -- servers_list.txt <- url added.
 # -- servers_check.log
+# -- servers_alert.log
 
 #-------
 # $ sh servers_check.sh servers_list.txt
 #-------
-# with crontab etc...
-
+# */5 * * * * sh /var/www/httpd/github/shell/servers_check/servers_check.sh servers_list.txt > /dev/null 2>&1
 #--------------------#
 
-# list read
+#SHELL=/bin/bash
+#PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
-#text = cat `./servers_list.txt`
+cd /var/www/httpd/github/shell/servers_check/
 
 alert_log="./server_alert.log"
 
@@ -42,6 +43,10 @@ do
 done
 
 exit 0
+
+
+# list read
+#text = cat `./servers_list_hon.txt`
 
 #echo `date +%F_%T`
 
